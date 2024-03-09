@@ -1,0 +1,230 @@
+<% layout("/layouts/boilerplate.ejs") -%>
+    <style>
+        #filter {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .filter {
+            margin-top: 2rem;
+            margin-right: 1.8rem;
+            text-align: center;
+            opacity: 0.6;
+            font-family: "Poppins", sans-serif;
+            font-weight: 500;
+        }
+
+        .filter:hover {
+            opacity: 1;
+            cursor: pointer;
+        }
+
+        .filter p {
+            font-size: 0.9rem;
+        }
+
+        .filter i {
+            font-size: 1.2rem;
+        }
+
+        .tax-info {
+            display: none;
+        }
+
+        .tax-toggle {
+            border: 1px solid rgba(191, 185, 185, 0.831);
+            border-radius: 1rem;
+            height: 2.6rem;
+            padding: 1rem;
+            margin-left: auto;
+            align-items: center;
+            display: flex;
+            font-size: 0.9rem;
+            font-family: "Poppins", sans-serif;
+            font-weight: 500;
+        }
+
+        .switch {
+            font-size: 17px;
+            position: relative;
+            display: inline-block;
+            width: 2.2em;
+            /* Reduce the width */
+            height: 1.2em;
+            /* Reduce the height */
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #B0B0B0;
+            border: 1px solid #B0B0B0;
+            transition: .4s;
+            border-radius: 32px;
+            outline: none;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 1.2rem;
+            /* Reduce the height */
+            width: 1.2rem;
+            /* Reduce the width */
+            border-radius: 50%;
+            outline: 2px solid #B0B0B0;
+            left: -1px;
+            bottom: -1px;
+            background-color: #fff;
+            transition: transform .25s ease-in-out 0s;
+        }
+
+        .slider-icon {
+            opacity: 0;
+            height: 10px;
+            /* Reduce the height */
+            width: 10px;
+            /* Reduce the width */
+            stroke-width: 8;
+            position: absolute;
+            z-index: 999;
+            stroke: #222222;
+            right: 60%;
+            top: 30%;
+            transition: right ease-in-out .3s, opacity ease-in-out .15s;
+        }
+
+        .switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        input:checked+.slider {
+            background-color: #222222;
+        }
+
+        input:checked+.slider .slider-icon {
+            opacity: 1;
+            right: 0%;
+        }
+
+        input:checked+.slider:before {
+            transform: translateX(1.3em);
+            outline-color: #181818;
+        }
+    </style>
+    <div id="filter">
+        <div class="filter">
+            <div><i class="fa-solid fa-fire"></i></div>
+            <p>Trending</p>
+        </div>
+        <div class="filter">
+            <i class="fa-solid fa-bed"></i>
+            <p>Rooms</p>
+        </div>
+        <div class="filter">
+            <i class="fa-solid fa-umbrella-beach"></i>
+            <p>Beach</p>
+        </div>
+        <div class="filter">
+            <i class="fa-solid fa-mountain-city"></i>
+            <p>Iconic Cities</p>
+        </div>
+        <div class="filter">
+            <i class="fa-solid fa-campground"></i>
+            <p>Camping</p>
+        </div>
+        <div class="filter">
+            <i class="fa-solid fa-water-ladder"></i>
+            <p>Amazing Pools</p>
+        </div>
+        <div class="filter">
+            <i class="fa-solid fa-snowflake"></i>
+            <p>Arctic</p>
+        </div>
+        <div class="filter">
+            <i class="fa-solid fa-ship"></i>
+            <p>Boats</p>
+        </div>
+        <div class="filter">
+            <div><i class="fa-solid fa-mountain-sun"></i></div>
+            <p>Mountains</p>
+        </div>
+        <div class="filter">
+            <div>
+                <i class="fa-solid fa-cow"></i>
+            </div>
+            <p>Farms</p>
+        </div>
+        <div class="filter">
+            <div><i class="fa-solid fa-landmark-dome"></i></div>
+            <p>Doms</p>
+        </div>
+        <div class="filter">
+            <div><i class="fa-solid fa-tree"></i></div>
+            <p>Forest</p>
+        </div>
+        <!-- <div class="filter">
+            <div><i class="fa-solid fa-golf-ball-tee"></i></div>
+            <p>Golfing</p>
+        </div> -->
+
+        <div class="tax-toggle">
+            <div class="form-check form-switch p-0">
+                <div class="d-inline-flex flex-row-reverse gap-1">
+                    <!-- <input class="form-check-input ms-0" type="checkbox" role="switch" id="switchCheckLabelStart" /> -->
+                    <label class="switch">
+                        <input type="checkbox" id="switchCheckLabelStart">
+                        <span class="slider">
+                            <svg class="slider-icon" viewBox="0 0 32 32" xmlns="http://www.w3.org/2000/svg"
+                                aria-hidden="true" role="presentation">
+                                <path fill="none" d="m4 16.5 8 8 16-16"></path>
+                            </svg>
+                        </span>
+                    </label>
+                    <label class="form-check-label" for="switchCheckLabelStart">Display Total After Tax</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row row-cols-lg-3 row-cols-md-3 row-cols-sm-3 mt-3" class="main-page">
+        <% for(let listing of allListings){%>
+            <a href="/listings/<%=listing._id%>" class="listing-link">
+                <div class="card col lisiting-card">
+                    <img src="<%=listing.image.url%>" class="card-img-top " alt="Listing_img" style="height: 20rem">
+                    <div class="card-img-overlay"></div>
+                    <div class="card-body">
+                        <p class="card-text">
+                            <b class="title">
+                                <%=listing.title%>
+                            </b>
+                            <br />
+                            <%= listing.price.toLocaleString("en-IN", {currency: "INR" , style: "currency" ,
+                                currencyDisplay: "symbol" ,minimumFractionDigits: 0})%>/night <i
+                                    class="tax-info">&nbsp;&nbsp;+18% GST</i>
+                        </p>
+                    </div>
+                </div>
+            </a>
+            <%}%>
+    </div>
+
+    <script>
+        let taxswitch = document.getElementById("switchCheckLabelStart");
+        taxswitch.addEventListener("click", () => {
+            let taxinfo = document.getElementsByClassName("tax-info");
+            for (info of taxinfo) {
+                if (info.style.display != "inline")
+                    info.style.display = "inline"
+                else {
+                    info.style.display = "none"
+                }
+            }
+        })
+    </script>

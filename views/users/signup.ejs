@@ -1,0 +1,66 @@
+<!-- <% layout("/layouts/boilerplate.ejs") -%>
+
+    <div class="row mt-3">
+        <h1 class="col-6 offset-3">SignUp on Wanderlust</h1>
+        <div class="col-6 offset-3">
+            <form action="/signup" method="post" class="needs-validation" novalidate>
+                <div class="mb-3">
+                    <label for="username" class="form-label">Username</label>
+                    <input name="username" type="text" class="form-control" id="username" required>
+                    <div class="valid-feedback">Looks Good!</div>
+                    <div class="invalid-feedback">Please Enter a valid Username</div>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input name="email" type="email" class="form-control" id="email" required>
+                </div>
+                <div class="mb-3">
+                    <label for="password" class="form-label">Password</label>
+                    <input name="password" type="password" class="form-control" id="password" 
+                        required> 
+                </div>
+                <button class="btn btn-success"><b>Sign up</b></button>
+            </form>
+        </div>
+    </div> -->
+
+    <% layout("/layouts/boilerplate.ejs") -%>
+
+
+</style>
+    <div class="row signup-form">
+        <div class="col-6 offset-3">
+            <form class="form-control1" action="/signup" method="post" class="needs-validation" novalidate>
+                <p class="title1">SignUp on Wanderlust</p>
+                <div class="input-field1">
+                  <input required="" class="input1" type="text"  name="username" class="form-control" id="username" />
+                  <label class="label" for="input1" for="username"><i class="fa-solid fa-user fa-xs"></i>&nbsp;&nbsp;Username</label>
+                </div>
+                <div class="input-field1">
+                    <input required="" class="input1" type="email" name="email" class="form-control" id="email" pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$" oninput="validateEmail(this)" />
+                    <label class="label" for="input1" for="email"><i class="fa-solid fa-envelope fa-xs"></i>&nbsp;&nbsp;Email</label>
+                    <div class="invalid-feedback" id="email-error">
+                      Please enter a valid email address.
+                    </div>
+                  </div>
+                  
+                  <script>
+                    function validateEmail(input) {
+                      const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+                      if (!regex.test(input.value)) {
+                        input.setCustomValidity("Please enter a valid email address.");
+                        document.getElementById("email-error").style.display = "block";
+                      } else {
+                        input.setCustomValidity("");
+                        document.getElementById("email-error").style.display = "none";
+                      }
+                    }
+                  </script>
+                
+                <div class="input-field1">
+                  <input required="" class="input1" type="password" name="password" type="password" class="form-control" id="password" />
+                  <label class="label" for="input1" for="password"><i class="fa-solid fa-lock fa-xs"></i>&nbsp;&nbsp;Enter Password</label>
+                </div>
+                <button class="submit-btn">Submit</button>
+        </div>
+    </div>

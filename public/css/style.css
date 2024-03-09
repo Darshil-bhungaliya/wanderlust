@@ -1,0 +1,189 @@
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.container {
+  flex: 1;
+}
+
+.navbar {
+  height: 5rem;
+  background-color: white;
+}
+
+.fa-campass {
+  color: #fe424d;
+  font-size: 2rem;
+}
+
+.nav-link {
+  color: #222222;
+}
+
+.f-info-links a {
+  text-decoration: none;
+  color: #222222;
+}
+
+.f-info-links a:hover {
+  text-decoration: underline;
+}
+
+.f-info {
+  text-align: center;
+  height: 8rem;
+  display: flex;
+  background-color: #ebebeb;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: space-evenly;
+}
+
+.f-info-social,
+.f-info-links,
+.f-info-brand {
+  width: 100%;
+  justify-content: center;
+
+  /* vertical-align: middle; */
+  display: flex;
+  align-items: center;
+}
+
+.f-info-social i {
+  font-size: 1.2rem;
+  margin-right: 1rem;
+}
+
+/* Login signup logout */
+
+.login {
+  transition: 0.5s !important;
+}
+.login:hover {
+  background-color: rgba(227, 223, 223, 0.608);
+  border-radius: 20px;
+}
+
+.signup {
+  transition: 0.5s !important;
+  background-color: #fe424d !important;
+  border: none !important;
+  
+}
+.signup:hover {
+  border-radius: 20px;
+}
+.logout {
+  transition: 0.5s !important;
+}
+.logout:hover {
+  border-radius: 20px;
+}
+
+/* card */
+
+.lisiting-card {
+  border: none !important;
+  margin-bottom: 2rem;
+}
+
+.card-img-top {
+  border-radius: 1rem !important;
+  width: 100% !important;
+  object-fit: cover !important;
+}
+
+.card-img {
+  border-radius: 1rem !important;
+  width: 100% !important;
+  object-fit: cover !important;
+}
+
+.card-body {
+  padding: 0 !important;
+}
+
+.card-text {
+  font-weight: 400;
+  color: #222222 !important;
+}
+
+.listing-link {
+  text-decoration: none !important;
+}
+
+.card-img-overlay {
+  opacity: 0;
+}
+
+.card-img-overlay:hover {
+  opacity: 0.2;
+  background-color: white;
+}
+
+.add-btn {
+  background-color: #fe424d;
+  border: none;
+}
+
+.show-img {
+  height: 50vh;
+}
+
+.btns {
+  display: flex;
+}
+
+.show-card {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+/* map */
+
+#map {
+  height: 400px;
+  width: 100%;
+  border-radius: 20px;
+}
+
+/* fonts */
+
+h3 {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+}
+.nav-link {
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+}
+.btn {
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
+}
+
+.title {
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+}
+.show {
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+}
+.price {
+  font-size: large;
+}
+
+/* login */
+.login-form,
+.signup-form {
+  margin-top: 8% !important;
+  margin-bottom: 8% !important;
+}
+
+.review-bg {
+  background-color: #000000 !important;
+}

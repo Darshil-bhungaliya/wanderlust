@@ -1,0 +1,153 @@
+<style>
+  .btn-search {
+    background-color: #FF4A4A;
+    color: #fff;
+    border-radius: 25px ;
+    padding: 0 1rem 0 1rem;
+    font-family: "Poppins", sans-serif;
+  }
+
+  .btn-search:hover {
+    background-color: #FF4A4A;
+    color: #fff;
+  }
+
+  .btn-search i {
+    display: inline;
+    margin-right: 0.5rem;
+  }
+
+  .search-inp {
+    border-radius: 25px;
+    padding: 0.5rem 3rem 0.5rem 3rem;
+    font-family: "Poppins", sans-serif;
+  }
+
+  .Btn {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    width: 45px;
+    height: 45px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition-duration: .3s;
+    box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.199);
+    background-color: #FF4A4A /*rgb(255, 65, 65);*/
+  }
+
+  /* plus sign */
+  .sign {
+    width: 100%;
+    transition-duration: .3s;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .sign svg {
+    width: 17px;
+  }
+
+  .sign svg path {
+    fill: white;
+  }
+
+  /* text */
+  .text {
+    position: absolute;
+    right: 0%;
+    width: 0%;
+    opacity: 0;
+    color: white;
+    font-size: 1.2em;
+    font-weight: 600;
+    transition-duration: .3s;
+  }
+
+  /* hover effect on button width */
+  .Btn:hover {
+    width: 125px;
+    border-radius: 40px;
+    transition-duration: .3s;
+  }
+
+  .Btn:hover .sign {
+    width: 30%;
+    transition-duration: .3s;
+    padding-left: 20px;
+  }
+
+  /* hover effect button's text */
+  .Btn:hover .text {
+    opacity: 1;
+    width: 70%;
+    transition-duration: .3s;
+    padding-right: 10px;
+  }
+
+  /* button click effect*/
+  .Btn:active {
+    transform: translate(2px, 2px);
+  }
+</style>
+
+<nav class="navbar navbar-expand-md bg-body-light border-bottom sticky-top">
+  <div class="container-fluid">
+    <a href="/listings">
+      <img src="/img/logo1.png" alt="alt img" width="190px" height="36px" class="logo">
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup"
+      aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse ms-3" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a class="nav-link text-dark" href="/listings">Explore All</a>
+      </div>
+      <div class="navbar-nav ms-auto">
+        <form class="d-flex" role="search">
+          <input class="form-control me-2 search-inp" type="search" placeholder="Search Destinations">
+          <button class="btn btn-search" type="submit"><i class="fa-solid fa-magnifying-glass"></i>Search</button>
+        </form>
+      </div>
+      <div class="navbar-nav ms-auto">
+        <a class="nav-link text-dark" href="/listings/new">WanderLust your home</a>
+
+        <% if(!currUser) { %>
+          <form class="form-inline  ms-3" action="/login">
+            <button class="btn my-2 my-sm-0 login" type="submit"><i
+                class="fa-solid fa-right-to-bracket"></i>&nbsp;<b>Log in</b></button>
+          </form>
+          <form class="form-inline ms-3" action="/signup">
+            <button class="btn btn-danger my-2 my-sm-0 signup" type="submit"><i
+                class="fa-solid fa-user fa-fade fa-sm"></i>&nbsp;<b>Sign up</b></button>
+          </form>
+          <!-- <a class="nav-link  text-dark " href="/signup">SignUp</a> -->
+          <!-- <a class="nav-link text-dark" href="/login">Login</a> -->
+          <% } %>
+            <% if(currUser) { %>
+              <!-- <form class="form-inline" action="/logout">
+                <button class="btn btn-danger my-2 my-sm-0 logout" type="submit"><i
+                    class="fa-solid fa-right-from-bracket "></i>&nbsp;<b>Log out</b></button>
+              </form> -->
+              <!-- <a class="nav-link text-dark" href="/logout">Logout</a> -->
+              <form class="form-inline" action="/logout">
+                <button class="Btn">
+                  <div class="sign"><svg viewBox="0 0 512 512">
+                      <path
+                        d="M377.9 105.9L500.7 228.7c7.2 7.2 11.3 17.1 11.3 27.3s-4.1 20.1-11.3 27.3L377.9 406.1c-6.4 6.4-15 9.9-24 9.9c-18.7 0-33.9-15.2-33.9-33.9l0-62.1-128 0c-17.7 0-32-14.3-32-32l0-64c0-17.7 14.3-32 32-32l128 0 0-62.1c0-18.7 15.2-33.9 33.9-33.9c9 0 17.6 3.6 24 9.9zM160 96L96 96c-17.7 0-32 14.3-32 32l0 256c0 17.7 14.3 32 32 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32l-64 0c-53 0-96-43-96-96L0 128C0 75 43 32 96 32l64 0c17.7 0 32 14.3 32 32s-14.3 32-32 32z">
+                      </path>
+                    </svg></div>
+                  <div class="text">Logout</div>
+                </button>
+              </form>
+
+              <% } %>
+      </div>
+    </div>
+  </div>
+</nav>
